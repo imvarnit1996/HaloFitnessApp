@@ -233,6 +233,12 @@ namespace HaloFitnessApp
             EmailTextBox.Text = "";
             MembershipIDTextBox.Text = "";
             JoiningDateTextBox.Text = "";
+            PriceFullTermTextBox.Text="";
+			PriceNextTermTextBox.Text="";
+			PricePerMonthTextBox.Text="";
+			ClientConfirmedTextBox.Text="";
+			TermTextBox.Text="";
+            
             if ((SummaryGroupBox.Visible) || (SearchGroupBox.Visible))
             {
                 for (int i = 620; i > 380; i -= INCREMENT)
