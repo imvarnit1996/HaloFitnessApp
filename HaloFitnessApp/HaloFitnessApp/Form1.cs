@@ -63,45 +63,64 @@ namespace HaloFitnessApp
         // calculate prices according to terms selected for membership
         private void calculatorFunction(int cust_term)
         {
+            int next_term = 0;
+            double next_price;
+            double next_term_discounted_price = 0;
 
-            for (int i = 0; i <= 1; i++)
+
+            if (cust_term == 1 || cust_term == 2)
             {
-                if (i == 1)
-                {
-                    if (cust_term <= 2)
-                        cust_term += 2;
-                    else
-                        cust_term += 6;
-                }
 
-                if (cust_term == 1 || cust_term == 2)
-                    discounted_price = PRICE_PER_MONTH;
-                else if (cust_term >= 3 && cust_term <= 6)
-                    discounted_price = PRICE_PER_MONTH - (PRICE_PER_MONTH * 0.1);
-                else if (cust_term >= 7 && cust_term <= 12)
-                    discounted_price = PRICE_PER_MONTH - (PRICE_PER_MONTH * 0.2);
-                else if (cust_term >= 13 && cust_term <= 18)
-                    discounted_price = PRICE_PER_MONTH - (PRICE_PER_MONTH * 0.25);
-                else if (cust_term >= 19 && cust_term <= 24)
-                    discounted_price = PRICE_PER_MONTH - (PRICE_PER_MONTH * 0.34);
-                else if (cust_term >= 25 && cust_term <= 60)
-                    discounted_price = PRICE_PER_MONTH - (PRICE_PER_MONTH * 0.4);
-                else
-                    discounted_price = PRICE_PER_MONTH - (PRICE_PER_MONTH * 0.67);
-
-                switch (i)
-                {
-                    case 1:
-                        total_price = discounted_price * cust_term;
-                        PriceNextTermTextBox.Text = total_price.ToString();
-                        break;
-                    case 0:
-                        total_price = discounted_price * cust_term;
-                        PricePerMonthTextBox.Text = discounted_price.ToString() + " €";
-                        PriceFullTermTextBox.Text = total_price.ToString() + " €";
-                        break;
-                }
+                discounted_price = PRICE_PER_MONTH;
+                next_term = 3;
+                next_term_discounted_price = PRICE_PER_MONTH - (PRICE_PER_MONTH * 0.1);
             }
+            else if (cust_term >= 3 && cust_term <= 6)
+            {
+                discounted_price = PRICE_PER_MONTH - (PRICE_PER_MONTH * 0.1);
+                next_term = 7;
+                next_term_discounted_price = PRICE_PER_MONTH - (PRICE_PER_MONTH * 0.2);
+            }
+
+            else if (cust_term >= 7 && cust_term <= 12)
+            {
+                discounted_price = PRICE_PER_MONTH - (PRICE_PER_MONTH * 0.2);
+                next_term = 13;
+                next_term_discounted_price = PRICE_PER_MONTH - (PRICE_PER_MONTH * 0.25);
+            }
+
+            else if (cust_term >= 13 && cust_term <= 18)
+            {
+                discounted_price = PRICE_PER_MONTH - (PRICE_PER_MONTH * 0.25);
+                next_term = 19;
+                next_term_discounted_price = PRICE_PER_MONTH - (PRICE_PER_MONTH * 0.34);
+            }
+
+            else if (cust_term >= 19 && cust_term <= 24)
+            {
+                discounted_price = PRICE_PER_MONTH - (PRICE_PER_MONTH * 0.34);
+                next_term = 25;
+                next_term_discounted_price = PRICE_PER_MONTH - (PRICE_PER_MONTH * 0.4);
+
+            }
+
+            else if (cust_term >= 25 && cust_term <= 60)
+            {
+                discounted_price = PRICE_PER_MONTH - (PRICE_PER_MONTH * 0.4);
+                next_term = 61;
+                next_term_discounted_price = PRICE_PER_MONTH - (PRICE_PER_MONTH * 0.67);
+            }
+            else
+            {
+                discounted_price = PRICE_PER_MONTH - (PRICE_PER_MONTH * 0.67);
+            }
+
+            total_price = discounted_price * cust_term;
+            PricePerMonthTextBox.Text = discounted_price.ToString() + " €";
+            PriceFullTermTextBox.Text = total_price.ToString() + " €";
+            next_price = next_term_discounted_price * next_term;
+            PriceNextTermTextBox.Text = next_price.ToString() + " €";
+
         }
 
         // displays prices for term chosen by customer
@@ -110,26 +129,25 @@ namespace HaloFitnessApp
 
             int num;
 
-            if (TermTextBox.Text != "")
+            if (TermTextBox.Text != "" && TermTextBox.Text != "0")
             {
 
                 if (int.TryParse(TermTextBox.Text, out num))
                 {
                     cust_term = int.Parse(TermTextBox.Text);
-                   // Console.WriteLine(cust_term);
+                    // Console.WriteLine(cust_term);
                     calculatorFunction(cust_term);
                 }
+
                 else
                 {
-                    MessageBox.Show("Only whole numbers are acceptable");
-
+                    MessageBox.Show("Only natural numbers are acceptable");
                 }
 
             }
             else
             {
-                MessageBox.Show("Please Enter a term to show prices");
-
+                MessageBox.Show("Please Enter a valid term to show prices, 0 is not valid term in this context");
             }
 
 
@@ -140,7 +158,7 @@ namespace HaloFitnessApp
         {
 
 
-            if (ClientConfirmedTextBox.Text != "")
+            if (ClientConfirmedTextBox.Text != "" && ClientConfirmedTextBox.Text != "0")
             {
 
                 int num;
@@ -171,7 +189,7 @@ namespace HaloFitnessApp
             }
             else
             {
-                MessageBox.Show("Please enter a term to proceed");
+                MessageBox.Show("Please enter a term to proceed 0 is not valid term in this context");
             }
         }
 
