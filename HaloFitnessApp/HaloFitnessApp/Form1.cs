@@ -23,7 +23,7 @@ namespace HaloFitnessApp
         static int PASSWORD_ATTEMPTS = 3;
         static string file_name = "Members_details.txt";
         //change file path according to your file location
-        string file_path = @"C:\Users\VarnitsMachine\source\repos\HaloFitnessApp\Members\" + file_name; 
+        string file_path = @"C:\Users\VarnitsMachine\source\repos\HaloFitnessApp\Members\" + file_name;
 
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -74,8 +74,8 @@ namespace HaloFitnessApp
                         cust_term += 6;
                 }
 
-                if (cust_term == 1 && cust_term == 2)
-                    discounted_price = 0;
+                if (cust_term == 1 || cust_term == 2)
+                    discounted_price = PRICE_PER_MONTH;
                 else if (cust_term >= 3 && cust_term <= 6)
                     discounted_price = PRICE_PER_MONTH - (PRICE_PER_MONTH * 0.1);
                 else if (cust_term >= 7 && cust_term <= 12)
@@ -109,28 +109,29 @@ namespace HaloFitnessApp
         {
 
             int num;
-           
-           if (TermTextBox.Text != "")
+
+            if (TermTextBox.Text != "")
             {
 
                 if (int.TryParse(TermTextBox.Text, out num))
                 {
                     cust_term = int.Parse(TermTextBox.Text);
+                   // Console.WriteLine(cust_term);
                     calculatorFunction(cust_term);
                 }
                 else
                 {
                     MessageBox.Show("Only whole numbers are acceptable");
-                   
+
                 }
-             
+
             }
             else
             {
                 MessageBox.Show("Please Enter a term to show prices");
-                
+
             }
-           
+
 
         }
 
@@ -166,7 +167,7 @@ namespace HaloFitnessApp
                 // Console.WriteLine(dateTime.ToString("dd-MM-yyyy"));
                 JoiningDateTextBox.Text = dateTime.ToString("dd-MM-yyyy");
 
-               
+
             }
             else
             {
@@ -178,16 +179,17 @@ namespace HaloFitnessApp
         private void ConfirmButton_Click(object sender, EventArgs e)
         {
             double check;
-            if(FullNameTextBox.Text=="" || TelephoneTextBox.Text=="" || EmailTextBox.Text == "")
+            if (FullNameTextBox.Text == "" || TelephoneTextBox.Text == "" || EmailTextBox.Text == "")
             {
                 MessageBox.Show("Fill all the details");
                 return;
-            }else  if(!double.TryParse(TelephoneTextBox.Text,out check))
+            }
+            else if (!double.TryParse(TelephoneTextBox.Text, out check))
             {
                 MessageBox.Show("Telephone number should only contain numbers");
                 return;
             }
-            else if(!Regex.IsMatch(EmailTextBox.Text, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"))
+            else if (!Regex.IsMatch(EmailTextBox.Text, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"))
             {
                 MessageBox.Show("Please Enter a valid email.");
                 return;
@@ -223,7 +225,7 @@ namespace HaloFitnessApp
 
         }
 
-       
+
 
         private void ClearButton_Click(object sender, EventArgs e)
         {
@@ -233,18 +235,18 @@ namespace HaloFitnessApp
             EmailTextBox.Text = "";
             MembershipIDTextBox.Text = "";
             JoiningDateTextBox.Text = "";
-	    PriceFullTermTextBox.Text="";
-	    PriceNextTermTextBox.Text="";
-            PricePerMonthTextBox.Text="";
-            ClientConfirmedTextBox.Text="";
-            TermTextBox.Text="";
-            SearchByDateTextBox.Text="";
-            SearchByIDTextBox.Text="";
-            AverageMembershipTermTextBox.Text=""
-            TotalSaleTextBox.Text="";
-            AverageSaleTextBox.Text="";
-            NumberOfMembershipsTextBox.Text="";
-            
+            PriceFullTermTextBox.Text = "";
+            PriceNextTermTextBox.Text = "";
+            PricePerMonthTextBox.Text = "";
+            ClientConfirmedTextBox.Text = "";
+            TermTextBox.Text = "";
+            SearchByDateTextBox.Text = "";
+            SearchByIDTextBox.Text = "";
+            AverageMembershipTermTextBox.Text = "";
+            TotalSaleTextBox.Text = "";
+            AverageSaleTextBox.Text = "";
+            NumberOfMembershipsTextBox.Text = "";
+
             if ((SummaryGroupBox.Visible) || (SearchGroupBox.Visible))
             {
                 for (int i = 620; i > 380; i -= INCREMENT)
@@ -268,7 +270,7 @@ namespace HaloFitnessApp
             {
                 MessageBox.Show("Please Enter either Membership Id or Date to search");
             }
-            else if(SearchByDateTextBox.Text != "" && SearchByIDTextBox.Text != "")
+            else if (SearchByDateTextBox.Text != "" && SearchByIDTextBox.Text != "")
             {
                 MessageBox.Show("Please Enter only one parameter for search either Membership Id or Date to search not both");
             }
@@ -294,18 +296,18 @@ namespace HaloFitnessApp
                             if (line == SearchByDateTextBox.Text)
                             {
                                 membership_details += Environment.NewLine + Environment.NewLine + membership_id;
-                                membership_details +=  Environment.NewLine + line;
+                                membership_details += Environment.NewLine + line;
 
                                 while ((line = sr.ReadLine()) != "#")
                                 {
                                     membership_details += Environment.NewLine + line;
                                 }
                                 // Console.WriteLine(line);
-                                 membership_id = "";
+                                membership_id = "";
                             }
                             else
                             {
-                              while ((line = sr.ReadLine()) != "#")
+                                while ((line = sr.ReadLine()) != "#")
                                 {
                                     continue;
                                 }
@@ -691,7 +693,7 @@ namespace HaloFitnessApp
 
         }
 
-       
+
         private void label14_Click(object sender, EventArgs e)
         {
 

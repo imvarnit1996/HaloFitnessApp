@@ -8,3 +8,13 @@ C:\Users\VarnitsMachine\Source\Repos\HaloFitnessApp\HaloFitnessApp\obj\Debug\Hal
 C:\Users\VarnitsMachine\Source\Repos\HaloFitnessApp\HaloFitnessApp\obj\Debug\HaloFitnessApp.csproj.CoreCompileInputs.cache
 C:\Users\VarnitsMachine\Source\Repos\HaloFitnessApp\HaloFitnessApp\obj\Debug\HaloFitnessApp.exe
 C:\Users\VarnitsMachine\Source\Repos\HaloFitnessApp\HaloFitnessApp\obj\Debug\HaloFitnessApp.pdb
+C:\Users\VarnitsMachine\Documents\GitHub\HaloFitnessApp\HaloFitnessApp\HaloFitnessApp\bin\Debug\HaloFitnessApp.exe.config
+C:\Users\VarnitsMachine\Documents\GitHub\HaloFitnessApp\HaloFitnessApp\HaloFitnessApp\bin\Debug\HaloFitnessApp.exe
+C:\Users\VarnitsMachine\Documents\GitHub\HaloFitnessApp\HaloFitnessApp\HaloFitnessApp\bin\Debug\HaloFitnessApp.pdb
+C:\Users\VarnitsMachine\Documents\GitHub\HaloFitnessApp\HaloFitnessApp\HaloFitnessApp\obj\Debug\HaloFitnessApp.csprojAssemblyReference.cache
+C:\Users\VarnitsMachine\Documents\GitHub\HaloFitnessApp\HaloFitnessApp\HaloFitnessApp\obj\Debug\HaloFitnessApp.MainForm.resources
+C:\Users\VarnitsMachine\Documents\GitHub\HaloFitnessApp\HaloFitnessApp\HaloFitnessApp\obj\Debug\HaloFitnessApp.Properties.Resources.resources
+C:\Users\VarnitsMachine\Documents\GitHub\HaloFitnessApp\HaloFitnessApp\HaloFitnessApp\obj\Debug\HaloFitnessApp.csproj.GenerateResource.cache
+C:\Users\VarnitsMachine\Documents\GitHub\HaloFitnessApp\HaloFitnessApp\HaloFitnessApp\obj\Debug\HaloFitnessApp.csproj.CoreCompileInputs.cache
+C:\Users\VarnitsMachine\Documents\GitHub\HaloFitnessApp\HaloFitnessApp\HaloFitnessApp\obj\Debug\HaloFitnessApp.exe
+C:\Users\VarnitsMachine\Documents\GitHub\HaloFitnessApp\HaloFitnessApp\HaloFitnessApp\obj\Debug\HaloFitnessApp.pdb
