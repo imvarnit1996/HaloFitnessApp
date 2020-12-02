@@ -264,7 +264,7 @@ namespace HaloFitnessApp
             {
                 string line;
                 string membership_details = "";
-              //  string membership_id = "";
+                string membership_id = "";
                 try
                 {
                     using (StreamReader sr = new StreamReader(file_path))
@@ -273,26 +273,31 @@ namespace HaloFitnessApp
                         while ((line = sr.ReadLine()) != null)
                         {
 
-                            //if (membership_id == "")
-                            //{
-                            //    membership_id = line;
-                            //}
+                            if (membership_id == "")
+                            {
+                                membership_id = line;
+                                line = sr.ReadLine();
+                            }
 
                             if (line == SearchByDateTextBox.Text)
                             {
-                                // membership_details += Environment.NewLine + Environment.NewLine + membership_id;
-                                membership_details += Environment.NewLine + Environment.NewLine + line;
+                                membership_details += Environment.NewLine + Environment.NewLine + membership_id;
+                                membership_details +=  Environment.NewLine + line;
 
                                 while ((line = sr.ReadLine()) != "#")
                                 {
                                     membership_details += Environment.NewLine + line;
                                 }
                                 // Console.WriteLine(line);
-                                // membership_id = "";
+                                 membership_id = "";
                             }
                             else
                             {
-
+                              while ((line = sr.ReadLine()) != "#")
+                                {
+                                    continue;
+                                }
+                                membership_id = "";
                             }
 
                         }
