@@ -680,6 +680,7 @@
             this.ClearButton.Size = new System.Drawing.Size(86, 23);
             this.ClearButton.TabIndex = 22;
             this.ClearButton.Text = "Clear";
+            this.toolTip1.SetToolTip(this.ClearButton, "Clear all the inputs");
             this.ClearButton.UseVisualStyleBackColor = true;
             this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
