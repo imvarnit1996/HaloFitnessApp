@@ -129,7 +129,7 @@ namespace HaloFitnessApp
 
             int num;
 
-            if (TermTextBox.Text != "" && TermTextBox.Text != "0")
+            if (TermTextBox.Text != "" && TermTextBox.Text != "0" && (int.Parse(TermTextBox.Text))>0)
             {
 
                 if (int.TryParse(TermTextBox.Text, out num))
@@ -141,13 +141,17 @@ namespace HaloFitnessApp
 
                 else
                 {
-                    MessageBox.Show("Only natural numbers are acceptable");
+                    MessageBox.Show("Only numbers greater than are allowed");
                 }
 
+            } else if (TermTextBox.Text == "0" || (int.Parse(TermTextBox.Text)) < 0)
+            {
+                MessageBox.Show("Please enter numbers greater than 0");
             }
             else
             {
-                MessageBox.Show("Please Enter a valid term to show prices, 0 is not valid term in this context");
+                MessageBox.Show("please enter a term to show price");
+
             }
 
 
@@ -158,7 +162,7 @@ namespace HaloFitnessApp
         {
 
 
-            if (ClientConfirmedTextBox.Text != "" && ClientConfirmedTextBox.Text != "0")
+            if (ClientConfirmedTextBox.Text != "" && ClientConfirmedTextBox.Text != "0" && (int.Parse(TermTextBox.Text)) > 0)
             {
 
                 int num;
@@ -169,7 +173,7 @@ namespace HaloFitnessApp
                 }
                 else
                 {
-                    MessageBox.Show("Only whole numbers are acceptable");
+                    MessageBox.Show("Only numbers greater than 0 are allowed");
                     return;
                 }
                 MembershipDetailsGroupBox.Visible = true;
@@ -187,10 +191,16 @@ namespace HaloFitnessApp
 
 
             }
+            else if (TermTextBox.Text == "0" || (int.Parse(TermTextBox.Text)) < 0)
+            {
+                MessageBox.Show("Please enter numbers greater than 0");
+            }
             else
             {
-                MessageBox.Show("Please enter a term to proceed 0 is not valid term in this context");
+                MessageBox.Show("Please enter a term to proceed "); 
+
             }
+         
         }
 
         // save the coustomer details to file Members_details.txt
