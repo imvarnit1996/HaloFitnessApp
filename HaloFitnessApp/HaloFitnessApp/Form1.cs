@@ -123,8 +123,15 @@ namespace HaloFitnessApp
 
         }
 
-        // displays prices for term chosen by customer
-        private void DisplayButton_Click(object sender, EventArgs e)
+
+        private void SearchFunction(int cust_term)
+        { 
+        
+        }
+
+
+            // displays prices for term chosen by customer
+            private void DisplayButton_Click(object sender, EventArgs e)
         {
 
             int num;
@@ -379,10 +386,18 @@ namespace HaloFitnessApp
                                 membership_details = line;
                                 while ((line = sr.ReadLine()) != "#")
                                 {
-                                    membership_details = membership_details + Environment.NewLine + line;
+                                    membership_details +=   Environment.NewLine + line;
                                 }
                                 Console.WriteLine(membership_details);
                                 break;
+                            }
+                            else
+                            {
+                                while ((line = sr.ReadLine()) != "#")
+                                {
+                                    continue;
+                                }
+                               
                             }
 
                         }
