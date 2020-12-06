@@ -129,32 +129,40 @@ namespace HaloFitnessApp
         // displays prices for term chosen by customer
         private void DisplayButton_Click(object sender, EventArgs e)
         {
+            int num;
 
-            if (TermTextBox.Text != "" && TermTextBox.Text != "0" && (int.Parse(TermTextBox.Text)) > 0)
+            try
             {
-                int num;
-                if (int.TryParse(TermTextBox.Text, out num))
+                if (TermTextBox.Text != "" && TermTextBox.Text != "0" && int.TryParse(TermTextBox.Text, out num))
                 {
-                    cust_term = int.Parse(TermTextBox.Text);
-                    // Console.WriteLine(cust_term);
-                    calculatorFunction(cust_term);
+
+                    if ((int.Parse(TermTextBox.Text)) > 0)
+                    {
+                        cust_term = int.Parse(TermTextBox.Text);
+                        // Console.WriteLine(cust_term);
+                        calculatorFunction(cust_term);
+                    }
+
+                    else
+                    {
+                        MessageBox.Show("Please enter numbers greater than 0");
+                    }
+
                 }
+
 
                 else
                 {
-                    MessageBox.Show("Only numbers greater than are allowed");
+                    MessageBox.Show("Please enter a valid term to show price, only numbers greater than 0 are allowed");
+
                 }
-
             }
-            else if (TermTextBox.Text == "0" || (int.Parse(TermTextBox.Text)) < 0)
+            catch (Exception)
             {
-                MessageBox.Show("Please enter numbers greater than 0");
+                MessageBox.Show("Please enter a valid term to show price, only numbers greater than are allowed");
             }
-            else
-            {
-                MessageBox.Show("please enter a term to show price");
 
-            }
+
 
 
         }
@@ -162,45 +170,47 @@ namespace HaloFitnessApp
         // proceeds with term chosen by customer
         private void ProceedButton_Click(object sender, EventArgs e)
         {
-
-
-            if (ClientConfirmedTextBox.Text != "" && ClientConfirmedTextBox.Text != "0" && (int.Parse(ClientConfirmedTextBox.Text)) > 0)
+            try
             {
-
                 int num;
-                if (int.TryParse(ClientConfirmedTextBox.Text, out num))
+
+                if (ClientConfirmedTextBox.Text != "" && ClientConfirmedTextBox.Text != "0" && int.TryParse(ClientConfirmedTextBox.Text, out num))
                 {
-                    cust_term = int.Parse(ClientConfirmedTextBox.Text);
-                    calculatorFunction(cust_term);
+
+                    if ((int.Parse(ClientConfirmedTextBox.Text)) > 0)
+                    {
+                        cust_term = int.Parse(ClientConfirmedTextBox.Text);
+                        calculatorFunction(cust_term);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Only numbers greater than 0 are allowed");
+                        return;
+                    }
+                    MembershipDetailsGroupBox.Visible = true;
+                    FullNameTextBox.Text = "";
+                    TelephoneTextBox.Text = "";
+                    EmailTextBox.Text = "";
+
+                    Random generator = new Random();
+                    int membership_id = generator.Next(100000, 1000000);
+                    // Console.WriteLine(membership_id);
+                    MembershipIDTextBox.Text = membership_id.ToString();
+                    DateTime dateTime = DateTime.UtcNow.Date;
+                    // Console.WriteLine(dateTime.ToString("dd-MM-yyyy"));
+                    JoiningDateTextBox.Text = dateTime.ToString("dd-MM-yyyy");
+
+
                 }
                 else
                 {
-                    MessageBox.Show("Only numbers greater than 0 are allowed");
-                    return;
+                    MessageBox.Show("Please enter a valid term to show price, only numbers greater than 0 are allowed");
+
                 }
-                MembershipDetailsGroupBox.Visible = true;
-                FullNameTextBox.Text = "";
-                TelephoneTextBox.Text = "";
-                EmailTextBox.Text = "";
-
-                Random generator = new Random();
-                int membership_id = generator.Next(100000, 1000000);
-                // Console.WriteLine(membership_id);
-                MembershipIDTextBox.Text = membership_id.ToString();
-                DateTime dateTime = DateTime.UtcNow.Date;
-                // Console.WriteLine(dateTime.ToString("dd-MM-yyyy"));
-                JoiningDateTextBox.Text = dateTime.ToString("dd-MM-yyyy");
-
-
             }
-            else if (TermTextBox.Text == "0" || (int.Parse(TermTextBox.Text)) < 0)
+            catch (Exception)
             {
-                MessageBox.Show("Please enter numbers greater than 0");
-            }
-            else
-            {
-                MessageBox.Show("Please enter a term to proceed ");
-
+                MessageBox.Show("Please enter a valid term to show price, only numbers greater than are allowed");
             }
 
         }
@@ -247,8 +257,10 @@ namespace HaloFitnessApp
                                         EmailTextBox.Text + Environment.NewLine + ClientConfirmedTextBox.Text + Environment.NewLine +
                                         PriceFullTermTextBox.Text + Environment.NewLine + "#" + Environment.NewLine;
 
-                File.AppendAllText(file_path, member_details);
-
+                for (int i = 0; i <= 500; i++)
+                {
+                    File.AppendAllText(file_path, member_details);
+                }
 
                 MessageBox.Show("Saved to " + file_name);
             }
