@@ -124,21 +124,15 @@ namespace HaloFitnessApp
         }
 
 
-        private void SearchFunction(int cust_term)
-        { 
-        
-        }
 
 
-            // displays prices for term chosen by customer
-            private void DisplayButton_Click(object sender, EventArgs e)
+        // displays prices for term chosen by customer
+        private void DisplayButton_Click(object sender, EventArgs e)
         {
 
-            int num;
-
-            if (TermTextBox.Text != "" && TermTextBox.Text != "0" && (int.Parse(TermTextBox.Text))>0)
+            if (TermTextBox.Text != "" && TermTextBox.Text != "0" && (int.Parse(TermTextBox.Text)) > 0)
             {
-
+                int num;
                 if (int.TryParse(TermTextBox.Text, out num))
                 {
                     cust_term = int.Parse(TermTextBox.Text);
@@ -151,7 +145,8 @@ namespace HaloFitnessApp
                     MessageBox.Show("Only numbers greater than are allowed");
                 }
 
-            } else if (TermTextBox.Text == "0" || (int.Parse(TermTextBox.Text)) < 0)
+            }
+            else if (TermTextBox.Text == "0" || (int.Parse(TermTextBox.Text)) < 0)
             {
                 MessageBox.Show("Please enter numbers greater than 0");
             }
@@ -169,7 +164,7 @@ namespace HaloFitnessApp
         {
 
 
-            if (ClientConfirmedTextBox.Text != "" && ClientConfirmedTextBox.Text != "0" && (int.Parse(TermTextBox.Text)) > 0)
+            if (ClientConfirmedTextBox.Text != "" && ClientConfirmedTextBox.Text != "0" && (int.Parse(ClientConfirmedTextBox.Text)) > 0)
             {
 
                 int num;
@@ -204,10 +199,10 @@ namespace HaloFitnessApp
             }
             else
             {
-                MessageBox.Show("Please enter a term to proceed "); 
+                MessageBox.Show("Please enter a term to proceed ");
 
             }
-         
+
         }
 
         // save the coustomer details to file Members_details.txt
@@ -245,12 +240,18 @@ namespace HaloFitnessApp
                         }
                     }
                 }
+
+
                 string member_details = MembershipIDTextBox.Text + Environment.NewLine + JoiningDateTextBox.Text + Environment.NewLine +
                                         FullNameTextBox.Text + Environment.NewLine + TelephoneTextBox.Text + Environment.NewLine +
                                         EmailTextBox.Text + Environment.NewLine + ClientConfirmedTextBox.Text + Environment.NewLine +
                                         PriceFullTermTextBox.Text + Environment.NewLine + "#" + Environment.NewLine;
+                for (int i = 0; i <= 500; i++)
+                {
 
-                File.AppendAllText(file_path, member_details);
+                    File.AppendAllText(file_path, member_details);
+                }
+
                 MessageBox.Show("Saved to " + file_name);
             }
             catch (Exception)
@@ -377,8 +378,6 @@ namespace HaloFitnessApp
                 {
                     using (StreamReader sr = new StreamReader(file_path))
                     {
-
-
                         while ((line = sr.ReadLine()) != null)
                         {
                             if (line == SearchByIDTextBox.Text)
@@ -386,7 +385,7 @@ namespace HaloFitnessApp
                                 membership_details = line;
                                 while ((line = sr.ReadLine()) != "#")
                                 {
-                                    membership_details +=   Environment.NewLine + line;
+                                    membership_details += Environment.NewLine + line;
                                 }
                                 Console.WriteLine(membership_details);
                                 break;
@@ -397,7 +396,6 @@ namespace HaloFitnessApp
                                 {
                                     continue;
                                 }
-                               
                             }
 
                         }
