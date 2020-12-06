@@ -246,11 +246,9 @@ namespace HaloFitnessApp
                                         FullNameTextBox.Text + Environment.NewLine + TelephoneTextBox.Text + Environment.NewLine +
                                         EmailTextBox.Text + Environment.NewLine + ClientConfirmedTextBox.Text + Environment.NewLine +
                                         PriceFullTermTextBox.Text + Environment.NewLine + "#" + Environment.NewLine;
-                for (int i = 0; i <= 500; i++)
-                {
 
-                    File.AppendAllText(file_path, member_details);
-                }
+                File.AppendAllText(file_path, member_details);
+
 
                 MessageBox.Show("Saved to " + file_name);
             }
