@@ -22,8 +22,9 @@ namespace HaloFitnessApp
         static double discounted_price = 0;
         static int PASSWORD_ATTEMPTS = 3;
         static string file_name = "Members_details.txt";
+
         //change file path according to your file location
-        string file_path = @"C:\Users\VarnitsMachine\source\repos\HaloFitnessApp\Members\" + file_name;
+        string file_path = @"C:\Users\VarnitsMachine\Documents\GitHub\HaloFitnessApp\HaloFitnessApp\Members\" + file_name;
 
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -48,6 +49,7 @@ namespace HaloFitnessApp
             {
                 if (PASSWORD_ATTEMPTS == 1)
                 {
+                    MessageBox.Show(" 0 attempts left, please restart and try again");
                     this.Close();
                 }
                 else
@@ -256,8 +258,11 @@ namespace HaloFitnessApp
                                         EmailTextBox.Text + Environment.NewLine + ClientConfirmedTextBox.Text + Environment.NewLine +
                                         PriceFullTermTextBox.Text + Environment.NewLine + "#" + Environment.NewLine;
 
-                    File.AppendAllText(file_path, member_details);
-            
+
+                File.AppendAllText(file_path, member_details);
+
+
+
 
                 MessageBox.Show("Saved to " + file_name);
             }
